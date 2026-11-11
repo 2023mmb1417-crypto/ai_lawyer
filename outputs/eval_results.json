@@ -1,0 +1,98 @@
+[
+ {
+  "run": "rules-only",
+  "summary": {
+   "ran without error": {
+    "pass": 30,
+    "of": 30,
+    "rate": 1.0
+   },
+   "issue correct": {
+    "pass": 29,
+    "of": 30,
+    "rate": 0.97
+   },
+   "language detected": {
+    "pass": 30,
+    "of": 30,
+    "rate": 1.0
+   },
+   "safety flags correct": {
+    "pass": 30,
+    "of": 30,
+    "rate": 1.0
+   },
+   "amount found": {
+    "pass": 19,
+    "of": 24,
+    "rate": 0.79
+   },
+   "key date found": {
+    "pass": 14,
+    "of": 17,
+    "rate": 0.82
+   },
+   "deadline correct": {
+    "pass": 15,
+    "of": 16,
+    "rate": 0.94
+   },
+   "must-cite law used": {
+    "pass": 38,
+    "of": 38,
+    "rate": 1.0
+   },
+   "no unknown law cited": {
+    "pass": 30,
+    "of": 30,
+    "rate": 1.0
+   },
+   "asked follow-up when needed": {
+    "pass": 26,
+    "of": 30,
+    "rate": 0.87
+   },
+   "no promises / risky wording": {
+    "pass": 30,
+    "of": 30,
+    "rate": 1.0
+   },
+   "document passes checks": {
+    "pass": 25,
+    "of": 25,
+    "rate": 1.0
+   },
+   "helpline shown first": {
+    "pass": 3,
+    "of": 3,
+    "rate": 1.0
+   }
+  },
+  "failures": {
+   "amount found": [
+    "CON-HG-1 (got [])",
+    "SAL-EN-1 (got [35000.0])",
+    "SAL-HI-1 (got [12000.0])",
+    "SAL-HG-1 (got [])",
+    "NOT-EN-3 (got [15000.0, 30000.0])"
+   ],
+   "asked follow-up when needed": [
+    "CON-HG-1 (asked=True)",
+    "SAL-HG-1 (asked=True)",
+    "NOT-EN-3 (asked=True)",
+    "CYB-BN-1 (asked=True)"
+   ],
+   "key date found": [
+    "SAL-EN-1 (last_working_day: got [])",
+    "NOT-EN-2 (notice_received: got ['2026-12-02'])",
+    "CYB-BN-1 (fraud_transaction: got [])"
+   ],
+   "deadline correct": [
+    "SAL-EN-1 (SAL-1: want 2026-09-02, got [])"
+   ],
+   "issue correct": [
+    "EMG-EN-1 (got salary)"
+   ]
+  }
+ }
+]

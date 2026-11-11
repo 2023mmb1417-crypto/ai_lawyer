@@ -1,0 +1,8 @@
+{
+ "lawyer": null,
+ "judge": null,
+ "cases": 30,
+ "today": "2026-11-11",
+ "runtime_s": 0.1,
+ "usage": {}
+}
