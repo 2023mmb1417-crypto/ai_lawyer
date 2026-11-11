@@ -94,5 +94,115 @@
     "EMG-EN-1 (got salary)"
    ]
   }
+ },
+ {
+  "run": "ai-trial",
+  "summary": {
+   "ran without error": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "issue correct": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "language detected": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "safety flags correct": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "amount found": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "key date found": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "must-cite law used": {
+    "pass": 4,
+    "of": 4,
+    "rate": 1.0
+   },
+   "no unknown law cited": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "asked follow-up when needed": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "no promises / risky wording": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "answer in person's language": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "passed checks first time": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "document passes checks": {
+    "pass": 1,
+    "of": 2,
+    "rate": 0.5
+   },
+   "deadline correct": {
+    "pass": 2,
+    "of": 2,
+    "rate": 1.0
+   },
+   "judge (1-10)": {
+    "correct": 10.0,
+    "plain": 10.0,
+    "actionable": 10.0,
+    "safe": 10.0,
+    "language_ok": 1.0,
+    "n": 2
+   },
+   "judge lowest": [
+    {
+     "id": "DEP-HG-1",
+     "correct": 10,
+     "plain": 10,
+     "actionable": 10,
+     "safe": 10,
+     "language_ok": true,
+     "problem": "}",
+     "judge": "groq:qwen/qwen3.8-27b"
+    },
+    {
+     "id": "CHQ-EN-1",
+     "correct": 10,
+     "plain": 10,
+     "actionable": 10,
+     "safe": 10,
+     "language_ok": true,
+     "problem": "The bot correctly identifies the critical 30-day deadline for sending the demand notice under Section 138 of the Negotiable Instruments Act. It accurately calculates the deadline (1 November 2026 + 30 days = 1 December 2026) and emphasizes the urgency. It also correctly outlines the subsequent steps (15 days for payment, then 1 month to file the complaint) and provides practical advice on evidence and legal aid. The advice is legally sound, clear, and directly addresses the user's situation.",
+     "judge": "groq:qwen/qwen3.8-27b"
+    }
+   ]
+  },
+  "failures": {
+   "document passes checks": [
+    "DEP-HG-1 (mentions sections not in the cited notes: ['25'])"
+   ]
+  }
  }
 ]

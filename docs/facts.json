@@ -1,0 +1,120 @@
+{
+ "problem": "Most people in India never get legal help for everyday problems: a deposit the landlord keeps, a refund that never comes, salary that stops, a cheque that bounces, a notice they cannot read, money lost to a UPI scam. A lawyer feels expensive and the process is confusing, so they give up, often while a strict deadline runs out (a cheque-bounce notice must go within 30 days of the bank memo; a bank must be told of a fraud within 3 working days). <b>Why I picked it:</b> it needs no context about Kuku, it helps people who have no other help, and it splits cleanly into what AI is good at (understanding a messy story in any language, explaining, drafting) and what must be exact code (deadlines, amounts, which law applies, safety).",
+ "input": "A person's problem in their own words, typed or as a voice note, in English, Hindi, Hinglish, Marathi, Tamil, Bengali or another Indian language. Example: <i>\"bhai mera landlord deposit wapas nahi kar raha. 25k diya tha, 2 months pehle flat khali kiya...\"</i>",
+ "output": "(1) A <b>case file</b>: what happened, when, how much, who, what proof. (2) <b>Where you stand</b> and 2-4 <b>options</b>, cheapest first, in the person's language, each tied to a checked law note. (3) <b>Deadlines</b> worked out by code, with days left. (4) A <b>ready-to-send letter</b> (legal notice, consumer complaint, bank fraud complaint, wage demand, reply to a notice) with [PLACEHOLDERS] for unknowns. (5) A <b>practice round</b>: the AI plays the landlord/company, then coaches.",
+ "steps": [
+  [
+   "1. Safety first",
+   "Code",
+   "Before any AI runs, a word list (English, Hindi, Hinglish) catches violence, self-harm, police custody and child abuse, and puts helplines (112, 181, 14416, 1098, legal aid 15100) at the top."
+  ],
+  [
+   "2. Language + problem type",
+   "Code",
+   "Script detection plus a Hinglish word list picks the reply language; a keyword scorer guesses which of the 6 problems it is. Alone, these are the free offline mode."
+  ],
+  [
+   "3. Build the case",
+   "AI",
+   "The model turns the story into a case file (Pydantic schema): problem type, timeline with dates, amounts with the exact words quoted, other side, proof."
+  ],
+  [
+   "4. Check the facts",
+   "Code",
+   "Any amount the person never said is dropped; future or impossible dates are dropped. The AI cannot invent a number."
+  ],
+  [
+   "5. Ask what is missing",
+   "Code + AI",
+   "Code knows what each problem needs (cheque: amount + memo date). If missing, it asks once; the AI only rewrites the questions in the person's language."
+  ],
+  [
+   "6. Find the law",
+   "Search (RAG)",
+   "29 short law notes I wrote from India Code, RBI, Consumer Affairs and NALSA, each with an id (CHQ-2 ...). The notes for this problem are ranked by TF-IDF and given to the AI."
+  ],
+  [
+   "7. Deadlines",
+   "Code",
+   "Code computes every deadline from the dates (30 days, 15 days + 1 month, 3 working days skipping weekends, 2 and 3 years) and flags ones already passed."
+  ],
+  [
+   "8. Advise",
+   "AI",
+   "The AI writes where they stand and the options, citing only note ids, in the person's language."
+  ],
+  [
+   "9. Check + repair",
+   "Code + AI",
+   "Code rejects: unknown note ids, section numbers not in the notes, promises ('you will surely win'), wrong language. A failed answer goes back once with the exact errors; what is still wrong is removed."
+  ],
+  [
+   "10. Letter + practice",
+   "AI + code",
+   "On request the AI drafts the letter; code checks the amount equals the case amount, the reply period, no invented names or sections, then adds the fixed parts. Practice mode role-plays the other side."
+  ],
+  [
+   "11. Second opinion",
+   "2nd AI",
+   "A different model (qwen3.8-27b) grades each answer 1-10 on correct, plain, actionable, safe, right language. The model that answers never grades itself."
+  ],
+  [
+   "12. The person decides",
+   "Human",
+   "Every answer ends with free legal aid (DLSA, 15100) and a clear 'not a lawyer'. The person reads, fills the [BRACKETS] and sends; court cases go to legal aid."
+  ]
+ ],
+ "scope": [
+  "<b>Covers 6 problems well:</b> security deposit, refund / defective product or service (incl. e-commerce, flights, coaching fees), unpaid salary, bounced cheque (NI Act s.138), a legal notice or court summons received, online/UPI fraud and 'digital arrest' scams.",
+  "<b>Does not cover:</b> divorce, custody, property and inheritance, criminal defence, tax, immigration. It says so honestly and sends the person to free legal aid. Emergencies always get helplines first, whatever the problem."
+ ],
+ "assumptions": [
+  "<b>The person tells the truth, and dates are as they remember.</b> Code only checks that numbers came from their words, not that they are true.",
+  "<b>General Indian law, not state-specific.</b> Rent laws differ by state; the tool explains the general position and names the Model Tenancy Act only where a state adopted it.",
+  "<b>Letters are in English</b> (companies, banks and courts expect it); the explanation is in the person's language.",
+  "<b>Voice = a recorded note</b> (like a WhatsApp voice message), transcribed by Whisper, not a live call.",
+  "<b>Free tools only.</b> A stronger model is one string on the command line, not a code change."
+ ],
+ "ai": "All on Groq's free tier: <b>gpt-oss-120b</b> builds the case and advises (gpt-oss-20b as backup and as the letter writer), <b>qwen3.8-27b</b> is the judge, <b>whisper-large-v3</b> turns voice into text. Every answer is cached, so a rerun costs nothing. Any provider LangChain supports (OpenAI, Anthropic, Kuku's own gateway) can be swapped in with <font face='Courier'>--lawyer provider:model</font>.",
+ "paid_cost": "under $0.01 per conversation at paid Groq rates",
+ "scale": "<b>At volume:</b> 1 lakh conversations a month is about $1,000 at paid rates; the code parts (triage, deadlines, checks) cost nothing. The free tier's ~8K tokens a minute is the bottleneck (about 2 conversations a minute).",
+ "example_id": "CHQ-EN-1",
+ "example_in": "I lent Rs 2,00,000 to my friend Rakesh. He gave me a cheque, which bounced for insufficient funds. The bank gave me the return memo on 1 November 2026. What should I do?",
+ "example_out": "<b>Where you stand:</b> The law treats a bounced cheque given for a loan as a criminal offence. You can claim the Rs 2,00,000 back and also ask for interim compensation...<br/><b>Options:</b> 1. Send a legal notice (post fee only) [CHQ-2] · 2. Lok Adalat settlement (free) [GEN-2] · 3. Criminal complaint at the magistrate's court where your bank branch is [CHQ-1, CHQ-3, CHQ-4]<br/><b>Deadlines (code):</b> send the demand notice by <b>2026-12-01 (20 days left)</b>; if unpaid, file the complaint by <b>2027-01-16</b>.<br/><b>Do this today:</b> Send a written demand notice to Rakesh by 1 December 2026, asking him to pay Rs 2,00,000 within 15 days. <b>+</b> proof list, free legal aid 15100, 'I am not a lawyer'. <b>+</b> /draft gives the s.138 notice with [CHEQUE NO.], [MEMO DATE] placeholders.",
+ "judge_note": "These 2 scores come from its first rubric, which gave 10/10 to everything; I then rewrote it with anchors (most decent answers 6-8) and made it name one weakness. Treat the judge as a filter for bad answers, not proof of good ones.",
+ "failures": [
+  "<b>Rules alone cannot tell dates apart.</b> In NOT-EN-2 the offline mode took the court hearing date as the day the summons arrived; the AI case file fixes this. Rules also miss amounts written without 'Rs' ('18000 per month') and multiply nothing (2 months x 18,000).",
+  "<b>Problem type when two things happen at once.</b> 'My husband beats me and took my salary card' is read by rules as a salary problem. The safety flag still fires first, which is what matters.",
+  "<b>Languages without keywords.</b> Tamil and Bengali work only with the AI on; rules-only answers in English.",
+  "<b>My own checker was wrong once:</b> it read 'Rs. 25,000' as 'section 25' and failed a correct deposit notice (DEP-HG-1 in the AI trial). Fixed and covered by a unit test.",
+  "<b>Full AI run:</b> the run on all 30 test cases is limited by the free tier's speed; its results go into outputs/ in the same repo as they finish."
+ ],
+ "limits": [
+  [
+   "1. Not a lawyer",
+   "It gives legal information, not advice, and cannot appear in court or check documents it has not seen.",
+   "Says so in every answer; every route ends at free legal aid (DLSA, 15100) for court work."
+  ],
+  [
+   "2. Law notes are mine",
+   "29 notes from public sources, checked by me, not by a lawyer; law changes (the labour codes started 21 Nov 2025).",
+   "Each note has its source link; next: a lawyer reviews the notes and a date on each."
+  ],
+  [
+   "3. Facts are only as good as the story",
+   "Code checks numbers came from the person, not that they are true.",
+   "Lists the proof to collect; the letter uses [PLACEHOLDERS] for anything not said."
+  ],
+  [
+   "4. Free-tier speed",
+   "About 8K tokens a minute per model: roughly 2 conversations a minute.",
+   "Rules-only mode is instant and offline; a paid key or Kuku's API removes the wait."
+  ],
+  [
+   "5. Small test set",
+   "30 conversations I wrote myself; real people write messier stories.",
+   "Next: real anonymised questions from legal-aid clinics, and a lawyer grading answers."
+  ]
+ ],
+ "tools": "<b>Building:</b> Claude Code (AI coding assistant) wrote the pipeline, the law notes, the 30 test cases with hand-worked deadlines, the unit tests and a first draft of this doc from my brief; I chose the scope, reviewed the law notes against their sources and checked the results. <b>Inside the tool:</b> Groq gpt-oss-120b (advice), gpt-oss-20b (letters, backup), qwen3.8-27b (judge), whisper-large-v3 (voice), scikit-learn TF-IDF (retrieval). <b>Where they got it wrong:</b> gpt-oss-120b sometimes wrapped its JSON in a schema envelope ({\"properties\": {...}}), so valid answers were rejected until the wrapper learned to unwrap them; the judge rated every answer 10/10 until I gave it a stricter rubric; and the first version of the section checker flagged 'Rs. 25,000' as a law section."
+}

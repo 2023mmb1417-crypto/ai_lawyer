@@ -1,0 +1,237 @@
+{
+ "meta": {
+  "lawyer": "groq:openai/gpt-oss-120b",
+  "judge": "groq:qwen/qwen3.8-27b",
+  "cases": 2,
+  "today": "2026-11-11",
+  "runtime_s": 123.0,
+  "usage": {
+   "groq:openai/gpt-oss-120b": {
+    "calls": 5,
+    "input_tokens": 7589,
+    "output_tokens": 2857,
+    "cache_hits": 2
+   },
+   "groq:qwen/qwen3.8-27b": {
+    "calls": 2,
+    "input_tokens": 3686,
+    "output_tokens": 202,
+    "cache_hits": 0
+   }
+  }
+ },
+ "results": [
+  {
+   "id": "DEP-HG-1",
+   "lang_expected": "hinglish",
+   "turns": [
+    {
+     "user": "bhai mera landlord deposit wapas nahi kar raha. 25k diya tha, 2 months pehle flat khali kiya. bolta hai deewar kharab ki, but kuch damage nahi hai. kya karu?",
+     "bot": "== Security deposit not returned ==\n\nWhere you stand:\nLandlord ko aapka security deposit wapas dena zaroori hai. Indian Contract Act ke tahat deposit sirf unpaid rent, bills ya genuine damage ke liye hi kata ja sakta hai. Agar aapko koi damage nahi dikh raha, to landlord ka claim galat hai. Isliye aapke paas strong legal right hai deposit wapas maangne ka.\n\nYour options:\n  1. Legal notice bhejna: 1. Ek formal notice likho, deposit amount aur deadline mention karo. 2. Speed Post ya Registered Post se bhejo, receipt aur tracking save karo. 3. Agar landlord respond karta hai, to aage ki steps decide karo. (Kuch hi paise (postage) aur 1‑2 din ka samay)\n     Law: [DEP-3] General practice (a notice is not compulsory against a private person, but courts and commissions expect one); [DEP-1] Indian Contract Act, 1872, s.73; your rent agreement; [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n  2. Lok Adalat me settlement: 1. District Legal Services Authority se aane wali Lok Adalat ki date pucho. 2. Apni sab proof aur notice ki copy leke jao. 3. Agar dono parties agree ho jayein, to award final hoga aur deposit mil jayega. (Free, aur agle 2‑4 hafte me ho sakta hai)\n     Law: [GEN-2] Legal Services Authorities Act, 1987, s.19-21; [DEP-1] Indian Contract Act, 1872, s.73; your rent agreement; [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n  3. Civil court me summary suit: 1. Agar notice aur Lok Adalat dono fail ho jaye, to likhit agreement ke basis par Summary Suit file karo (Order XXXVII). 2. Court me claim form aur sab proof jama karo. 3. Court ka judgment aane tak 3‑6 mahine lag sakte hain. (Court fees (thoda paisa) aur 3‑6 mahine ka samay)\n     Law: [DEP-4] Code of Civil Procedure, 1908, Order XXXVII; Limitation Act, 1963 (3 years for money claims); [DEP-1] Indian Contract Act, 1872, s.73; your rent agreement; [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n\nDeadlines (calculated from your dates):\n  - File a civil suit for the deposit (if notice fails): by 2029-09-12 (1036 days left; rule: 3 years for money claims, [DEP-4])\n\nDo this today: Aaj hi landlord ko ek legal notice bhej do, jisme aap deposit ki full amount wapas maang rahe ho aur 15 din ke andar dene ko keh rahe ho.\n\nProof to keep ready:\n  - Signed rent agreement aur deposit receipt\n  - Move‑out ke waqt ki handover letter ya email\n  - Flat ki photos/video jo damage na dikhaye (especially deewar)\n  - Landlord ke saath ki chat/email jisme deposit wapas na karne ki baat ho\n\nFree legal help: apne district court mein DLSA (District Legal Services Authority) se milein, ya 15100 (NALSA) par call karein. Aapko free vakeel mil sakta hai.\nMain ek AI legal helper hoon, vakeel nahi. Yeh India ke kanoon ki general jaankari hai, legal advice nahi. Court case ke liye vakeel ya free legal aid office se baat karein.",
+     "kind": "advice"
+    }
+   ],
+   "asked_followup": false,
+   "result": {
+    "kind": "advice",
+    "lang": "hinglish",
+    "flags": [],
+    "issue": "deposit",
+    "case": {
+     "issue": "deposit",
+     "summary": "The tenant gave a Rs 25,000 security deposit to the landlord, vacated the flat two months ago, and the landlord is refusing to return the deposit claiming wall damage that the tenant disputes.",
+     "other_side": "landlord",
+     "other_side_type": "landlord",
+     "timeline": [
+      {
+       "date": "2026-09-12",
+       "date_text": "2 months pehle",
+       "type": "moved_out",
+       "what": "Tenant vacated the flat and handed over keys"
+      }
+     ],
+     "amounts": [
+      {
+       "value": 25000.0,
+       "quote": "25k diya tha",
+       "what": "security deposit"
+      }
+     ],
+     "evidence_have": [],
+     "goal": "get the Rs 25,000 deposit back",
+     "city_or_state": ""
+    },
+    "deadlines": [
+     {
+      "what": "File a civil suit for the deposit (if notice fails)",
+      "by": "2029-09-12",
+      "days_left": 1036,
+      "rule": "3 years for money claims",
+      "law_id": "DEP-4"
+     }
+    ],
+    "law_ids": [
+     "DEP-1",
+     "DEP-3",
+     "DEP-4",
+     "GEN-2",
+     "GEN-3"
+    ],
+    "answer": "== Security deposit not returned ==\n\nWhere you stand:\nLandlord ko aapka security deposit wapas dena zaroori hai. Indian Contract Act ke tahat deposit sirf unpaid rent, bills ya genuine damage ke liye hi kata ja sakta hai. Agar aapko koi damage nahi dikh raha, to landlord ka claim galat hai. Isliye aapke paas strong legal right hai deposit wapas maangne ka.\n\nYour options:\n  1. Legal notice bhejna: 1. Ek formal notice likho, deposit amount aur deadline mention karo. 2. Speed Post ya Registered Post se bhejo, receipt aur tracking save karo. 3. Agar landlord respond karta hai, to aage ki steps decide karo. (Kuch hi paise (postage) aur 1‑2 din ka samay)\n     Law: [DEP-3] General practice (a notice is not compulsory against a private person, but courts and commissions expect one); [DEP-1] Indian Contract Act, 1872, s.73; your rent agreement; [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n  2. Lok Adalat me settlement: 1. District Legal Services Authority se aane wali Lok Adalat ki date pucho. 2. Apni sab proof aur notice ki copy leke jao. 3. Agar dono parties agree ho jayein, to award final hoga aur deposit mil jayega. (Free, aur agle 2‑4 hafte me ho sakta hai)\n     Law: [GEN-2] Legal Services Authorities Act, 1987, s.19-21; [DEP-1] Indian Contract Act, 1872, s.73; your rent agreement; [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n  3. Civil court me summary suit: 1. Agar notice aur Lok Adalat dono fail ho jaye, to likhit agreement ke basis par Summary Suit file karo (Order XXXVII). 2. Court me claim form aur sab proof jama karo. 3. Court ka judgment aane tak 3‑6 mahine lag sakte hain. (Court fees (thoda paisa) aur 3‑6 mahine ka samay)\n     Law: [DEP-4] Code of Civil Procedure, 1908, Order XXXVII; Limitation Act, 1963 (3 years for money claims); [DEP-1] Indian Contract Act, 1872, s.73; your rent agreement; [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n\nDeadlines (calculated from your dates):\n  - File a civil suit for the deposit (if notice fails): by 2029-09-12 (1036 days left; rule: 3 years for money claims, [DEP-4])\n\nDo this today: Aaj hi landlord ko ek legal notice bhej do, jisme aap deposit ki full amount wapas maang rahe ho aur 15 din ke andar dene ko keh rahe ho.\n\nProof to keep ready:\n  - Signed rent agreement aur deposit receipt\n  - Move‑out ke waqt ki handover letter ya email\n  - Flat ki photos/video jo damage na dikhaye (especially deewar)\n  - Landlord ke saath ki chat/email jisme deposit wapas na karne ki baat ho\n\nFree legal help: apne district court mein DLSA (District Legal Services Authority) se milein, ya 15100 (NALSA) par call karein. Aapko free vakeel mil sakta hai.\nMain ek AI legal helper hoon, vakeel nahi. Yeh India ke kanoon ki general jaankari hai, legal advice nahi. Court case ke liye vakeel ya free legal aid office se baat karein.",
+    "log": [],
+    "errors": [],
+    "repaired": false
+   },
+   "draft": {
+    "ok": false,
+    "draft": {
+     "doc_type": "legal_notice",
+     "subject": "Legal Notice for Return of Security Deposit",
+     "body": [
+      "I, [YOUR NAME], residing at [YOUR ADDRESS], hereby give this legal notice to my landlord, [OTHER PARTY NAME], whose address is [OTHER PARTY ADDRESS].",
+      "On [DATE] I vacated the rented flat and handed over the keys to the landlord as per our tenancy agreement.",
+      "I had paid a security deposit of Rs. 25,000 at the commencement of the tenancy and, under the terms of the agreement and the Indian Contract Act, 1872 (s.73), the landlord must return the deposit after I have vacated, subject only to lawful deductions for unpaid rent, bills or genuine damage.",
+      "The landlord is refusing to refund the deposit, alleging damage to the walls, a claim which I dispute as there is no damage beyond normal wear and tear.",
+      "Accordingly, I demand the return of the full security deposit of Rs. 25,000 within fifteen (15) days from the receipt of this notice.",
+      "If the amount is not paid within the stipulated period, I will be compelled to initiate legal proceedings for recovery of the money, including interest and costs, under the provisions for civil suits.",
+      "Please treat this notice as a final opportunity to settle the matter amicably; otherwise I will proceed with filing a summary suit in the appropriate civil court."
+     ],
+     "demand_amount": 25000.0,
+     "reply_days": 15,
+     "law_ids": [
+      "DEP-1",
+      "DEP-3",
+      "DEP-4"
+     ]
+    },
+    "text": "LEGAL NOTICE\n\nDate: [DATE]\nFrom: [YOUR NAME], [YOUR ADDRESS], [YOUR PHONE]\nTo: [OTHER PARTY NAME], [OTHER PARTY ADDRESS]\nSent by: Speed Post / Registered Post AD and email\n\nSubject: Legal Notice for Return of Security Deposit\n\nI, [YOUR NAME], residing at [YOUR ADDRESS], hereby give this legal notice to my landlord, [OTHER PARTY NAME], whose address is [OTHER PARTY ADDRESS].\n\nOn [DATE] I vacated the rented flat and handed over the keys to the landlord as per our tenancy agreement.\n\nI had paid a security deposit of Rs. 25,000 at the commencement of the tenancy and, under the terms of the agreement and the Indian Contract Act, 1872 (s.73), the landlord must return the deposit after I have vacated, subject only to lawful deductions for unpaid rent, bills or genuine damage.\n\nThe landlord is refusing to refund the deposit, alleging damage to the walls, a claim which I dispute as there is no damage beyond normal wear and tear.\n\nAccordingly, I demand the return of the full security deposit of Rs. 25,000 within fifteen (15) days from the receipt of this notice.\n\nIf the amount is not paid within the stipulated period, I will be compelled to initiate legal proceedings for recovery of the money, including interest and costs, under the provisions for civil suits.\n\nPlease treat this notice as a final opportunity to settle the matter amicably; otherwise I will proceed with filing a summary suit in the appropriate civil court.\n\nLaw relied on: [DEP-1] Indian Contract Act, 1872, s.73; your rent agreement; [DEP-3] General practice (a notice is not compulsory against a private person, but courts and commissions expect one); [DEP-4] Code of Civil Procedure, 1908, Order XXXVII; Limitation Act, 1963 (3 years for money claims)\n\nYours faithfully,\n\n[YOUR NAME]\n[SIGNATURE]\n\nEnclosures: copies of [LIST YOUR PROOF]. Keep the postal receipt and tracking printout.\n-- Drafted by an AI legal helper. Read every line, fill the [BRACKETS], and have it checked by a lawyer or the free legal aid office (15100) before sending. --",
+    "errors": [
+     "mentions sections not in the cited notes: ['25']"
+    ],
+    "repaired": true
+   },
+   "judge": {
+    "correct": 10,
+    "plain": 10,
+    "actionable": 10,
+    "safe": 10,
+    "language_ok": true,
+    "problem": "}",
+    "judge": "groq:qwen/qwen3.8-27b"
+   },
+   "error": null,
+   "seconds": 123.0
+  },
+  {
+   "id": "CHQ-EN-1",
+   "lang_expected": "en",
+   "turns": [
+    {
+     "user": "I lent Rs 2,00,000 to my friend Rakesh. He gave me a cheque, which bounced for insufficient funds. The bank gave me the return memo on 1 November 2026. What should I do?",
+     "bot": "== Cheque bounced ==\n\nWhere you stand:\nThe law treats a bounced cheque given for a loan as a criminal offence. You can claim the Rs 2,00,000 back and also ask for interim compensation. If you follow the steps in time, the case can go to court or be settled earlier.\n\nYour options:\n  1. Send a legal notice: Draft a formal notice stating the cheque bounced, the amount owed and a 15‑day deadline. Send it by Speed Post or Registered Post with acknowledgement. Keep the receipt. (Very low cost (post fee only). It can be done today and may make Rakesh pay immediately.)\n     Law: [DEP-3] General practice (a notice is not compulsory against a private person, but courts and commissions expect one); [CHQ-2] Negotiable Instruments Act, 1881, s.138(b) and (c); [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n  2. Lok Adalat settlement: Apply to the nearest Lok Adalat through the District Legal Services Authority. Bring the notice, bank memo and other proof. The Lok Adalat will try to get a settlement without a court fee. (Free, takes a few weeks depending on the next Lok Adalat date.)\n     Law: [GEN-2] Legal Services Authorities Act, 1987, s.19-21; [CHQ-2] Negotiable Instruments Act, 1881, s.138(b) and (c); [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n  3. File a criminal complaint: If Rakesh does not pay after the notice, file a complaint under Section 138 of the Negotiable Instruments Act at the magistrate’s court where your bank branch is located. Attach the notice, bank memo and proof of loan. (Low court fee, but may take several months for trial.)\n     Law: [CHQ-1] Negotiable Instruments Act, 1881, s.138; [CHQ-2] Negotiable Instruments Act, 1881, s.138(b) and (c); [CHQ-3] Negotiable Instruments Act, 1881, s.142; [CHQ-4] Negotiable Instruments Act, 1881, s.143A; [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n\nDeadlines (calculated from your dates):\n  - Send the demand notice to the person who gave the cheque: by 2026-12-01 (20 days left; rule: 30 days from the bank's return memo, [CHQ-2])\n  - If unpaid, file the complaint in court (latest possible date, if the notice is delivered on the 30th day): by 2027-01-16 (66 days left; rule: 15 days to pay after notice, then 1 month, [CHQ-3])\n\nDo this today: Send a written demand notice to Rakesh by 1 December 2026, asking him to pay Rs 2,00,000 within 15 days.\n\nProof to keep ready:\n  - Bank return memo (original and a copy)\n  - Copy of the cheque (front and back)\n  - Loan agreement or any written proof of the loan\n  - Bank statements showing the amount was credited\n  - Screenshots or messages where Rakesh acknowledges the loan\n\nFree legal help: District Legal Services Authority at your district court, or call 15100 (NALSA). You may qualify for a free lawyer.\nI am an AI legal helper, not a lawyer. This is general legal information for India, not legal advice. For a court case, talk to a lawyer or the free legal aid office.",
+     "kind": "advice"
+    }
+   ],
+   "asked_followup": false,
+   "result": {
+    "kind": "advice",
+    "lang": "en",
+    "flags": [],
+    "issue": "cheque_bounce",
+    "case": {
+     "issue": "cheque_bounce",
+     "summary": "The user lent Rs 2,00,000 to a friend named Rakesh. Rakesh gave a cheque which later bounced due to insufficient funds. The bank provided a return memo on 1 November 2026. The user seeks advice on how to recover the money.",
+     "other_side": "Rakesh",
+     "other_side_type": "individual",
+     "timeline": [
+      {
+       "date": "2026-11-01",
+       "date_text": "1 November 2026",
+       "type": "cheque_return_memo",
+       "what": "Bank returned the cheque with a memo for insufficient funds"
+      }
+     ],
+     "amounts": [
+      {
+       "value": 200000.0,
+       "quote": "Rs 2,00,000",
+       "what": "loan amount"
+      }
+     ],
+     "evidence_have": [
+      "bank return memo"
+     ],
+     "goal": "recover the Rs 2,00,000 loan amount",
+     "city_or_state": ""
+    },
+    "deadlines": [
+     {
+      "what": "Send the demand notice to the person who gave the cheque",
+      "by": "2026-12-01",
+      "days_left": 20,
+      "rule": "30 days from the bank's return memo",
+      "law_id": "CHQ-2"
+     },
+     {
+      "what": "If unpaid, file the complaint in court (latest possible date, if the notice is delivered on the 30th day)",
+      "by": "2027-01-16",
+      "days_left": 66,
+      "rule": "15 days to pay after notice, then 1 month",
+      "law_id": "CHQ-3"
+     }
+    ],
+    "law_ids": [
+     "CHQ-1",
+     "CHQ-2",
+     "CHQ-3",
+     "CHQ-4",
+     "DEP-3",
+     "GEN-2",
+     "GEN-3"
+    ],
+    "answer": "== Cheque bounced ==\n\nWhere you stand:\nThe law treats a bounced cheque given for a loan as a criminal offence. You can claim the Rs 2,00,000 back and also ask for interim compensation. If you follow the steps in time, the case can go to court or be settled earlier.\n\nYour options:\n  1. Send a legal notice: Draft a formal notice stating the cheque bounced, the amount owed and a 15‑day deadline. Send it by Speed Post or Registered Post with acknowledgement. Keep the receipt. (Very low cost (post fee only). It can be done today and may make Rakesh pay immediately.)\n     Law: [DEP-3] General practice (a notice is not compulsory against a private person, but courts and commissions expect one); [CHQ-2] Negotiable Instruments Act, 1881, s.138(b) and (c); [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n  2. Lok Adalat settlement: Apply to the nearest Lok Adalat through the District Legal Services Authority. Bring the notice, bank memo and other proof. The Lok Adalat will try to get a settlement without a court fee. (Free, takes a few weeks depending on the next Lok Adalat date.)\n     Law: [GEN-2] Legal Services Authorities Act, 1987, s.19-21; [CHQ-2] Negotiable Instruments Act, 1881, s.138(b) and (c); [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n  3. File a criminal complaint: If Rakesh does not pay after the notice, file a complaint under Section 138 of the Negotiable Instruments Act at the magistrate’s court where your bank branch is located. Attach the notice, bank memo and proof of loan. (Low court fee, but may take several months for trial.)\n     Law: [CHQ-1] Negotiable Instruments Act, 1881, s.138; [CHQ-2] Negotiable Instruments Act, 1881, s.138(b) and (c); [CHQ-3] Negotiable Instruments Act, 1881, s.142; [CHQ-4] Negotiable Instruments Act, 1881, s.143A; [GEN-3] Bharatiya Sakshya Adhiniyam, 2023 (electronic records are evidence)\n\nDeadlines (calculated from your dates):\n  - Send the demand notice to the person who gave the cheque: by 2026-12-01 (20 days left; rule: 30 days from the bank's return memo, [CHQ-2])\n  - If unpaid, file the complaint in court (latest possible date, if the notice is delivered on the 30th day): by 2027-01-16 (66 days left; rule: 15 days to pay after notice, then 1 month, [CHQ-3])\n\nDo this today: Send a written demand notice to Rakesh by 1 December 2026, asking him to pay Rs 2,00,000 within 15 days.\n\nProof to keep ready:\n  - Bank return memo (original and a copy)\n  - Copy of the cheque (front and back)\n  - Loan agreement or any written proof of the loan\n  - Bank statements showing the amount was credited\n  - Screenshots or messages where Rakesh acknowledges the loan\n\nFree legal help: District Legal Services Authority at your district court, or call 15100 (NALSA). You may qualify for a free lawyer.\nI am an AI legal helper, not a lawyer. This is general legal information for India, not legal advice. For a court case, talk to a lawyer or the free legal aid office.",
+    "log": [],
+    "errors": [],
+    "repaired": false
+   },
+   "draft": {
+    "ok": true,
+    "draft": {
+     "doc_type": "legal_notice",
+     "subject": "Legal Notice for Recovery of Rs 2,00,000",
+     "body": [
+      "I, [YOUR NAME], residing at [YOUR ADDRESS], hereby give this legal notice to Mr. Rakesh, residing at [OTHER PARTY ADDRESS].",
+      "On [DATE], you issued a cheque (Cheque No. [CHEQUE NO.]) in favour of me for Rs 2,00,000 as repayment of a loan that I had extended to you.",
+      "The said cheque was presented within its validity period but was returned by my bank on 1 November 2026 with a memo indicating insufficient funds.",
+      "Pursuant to Section 138 of the Negotiable Instruments Act, 1881, the presentation of a cheque for a debt and its subsequent return due to insufficient funds constitutes a criminal offence (see [CHQ-1]).",
+      "As required by Section 138(b) and (c), I am serving you this written demand notice within 30 days of receiving the bank’s return memo (see [CHQ-2]). You are required to pay the full amount of Rs 2,00,000 within fifteen (15) days from the receipt of this notice.",
+      "If the amount is not paid within the stipulated period, I will be compelled to file a criminal complaint against you under Section 138 of the Negotiable Instruments Act, and also pursue civil recovery of the amount, as permitted by law (see [CHQ-3]).",
+      "Please note that a legal notice is a necessary step before initiating court proceedings, and it is advisable to keep all relevant documents, including the bank return memo and this notice, for future reference (see [DEP-3]).",
+      "Kindly treat this notice with the seriousness it deserves and arrange payment of Rs 2,00,000 within the next fifteen days to avoid further legal action."
+     ],
+     "demand_amount": 200000.0,
+     "reply_days": 15,
+     "law_ids": [
+      "CHQ-1",
+      "CHQ-2",
+      "DEP-3"
+     ]
+    },
+    "text": "LEGAL NOTICE\n\nDate: [DATE]\nFrom: [YOUR NAME], [YOUR ADDRESS], [YOUR PHONE]\nTo: [OTHER PARTY NAME], [OTHER PARTY ADDRESS]\nSent by: Speed Post / Registered Post AD and email\n\nSubject: Legal Notice for Recovery of Rs 2,00,000\n\nI, [YOUR NAME], residing at [YOUR ADDRESS], hereby give this legal notice to Mr. Rakesh, residing at [OTHER PARTY ADDRESS].\n\nOn [DATE], you issued a cheque (Cheque No. [CHEQUE NO.]) in favour of me for Rs 2,00,000 as repayment of a loan that I had extended to you.\n\nThe said cheque was presented within its validity period but was returned by my bank on 1 November 2026 with a memo indicating insufficient funds.\n\nPursuant to Section 138 of the Negotiable Instruments Act, 1881, the presentation of a cheque for a debt and its subsequent return due to insufficient funds constitutes a criminal offence (see [CHQ-1]).\n\nAs required by Section 138(b) and (c), I am serving you this written demand notice within 30 days of receiving the bank’s return memo (see [CHQ-2]). You are required to pay the full amount of Rs 2,00,000 within fifteen (15) days from the receipt of this notice.\n\nIf the amount is not paid within the stipulated period, I will be compelled to file a criminal complaint against you under Section 138 of the Negotiable Instruments Act, and also pursue civil recovery of the amount, as permitted by law (see [CHQ-3]).\n\nPlease note that a legal notice is a necessary step before initiating court proceedings, and it is advisable to keep all relevant documents, including the bank return memo and this notice, for future reference (see [DEP-3]).\n\nKindly treat this notice with the seriousness it deserves and arrange payment of Rs 2,00,000 within the next fifteen days to avoid further legal action.\n\nLaw relied on: [CHQ-1] Negotiable Instruments Act, 1881, s.138; [CHQ-2] Negotiable Instruments Act, 1881, s.138(b) and (c); [DEP-3] General practice (a notice is not compulsory against a private person, but courts and commissions expect one)\n\nYours faithfully,\n\n[YOUR NAME]\n[SIGNATURE]\n\nEnclosures: copies of [LIST YOUR PROOF]. Keep the postal receipt and tracking printout.\n-- Drafted by an AI legal helper. Read every line, fill the [BRACKETS], and have it checked by a lawyer or the free legal aid office (15100) before sending. --",
+    "errors": [],
+    "repaired": false
+   },
+   "judge": {
+    "correct": 10,
+    "plain": 10,
+    "actionable": 10,
+    "safe": 10,
+    "language_ok": true,
+    "problem": "The bot correctly identifies the critical 30-day deadline for sending the demand notice under Section 138 of the Negotiable Instruments Act. It accurately calculates the deadline (1 November 2026 + 30 days = 1 December 2026) and emphasizes the urgency. It also correctly outlines the subsequent steps (15 days for payment, then 1 month to file the complaint) and provides practical advice on evidence and legal aid. The advice is legally sound, clear, and directly addresses the user's situation.",
+    "judge": "groq:qwen/qwen3.8-27b"
+   },
+   "error": null,
+   "seconds": 69.4
+  }
+ ]
+}

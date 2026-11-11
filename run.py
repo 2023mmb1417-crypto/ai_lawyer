@@ -53,6 +53,7 @@ def main():
     ap.add_argument("--lawyer", default="groq:openai/gpt-oss-120b")
     ap.add_argument("--fallback", default="groq:openai/gpt-oss-20b")
     ap.add_argument("--judge", default="groq:qwen/qwen3.8-27b")
+    ap.add_argument("--drafter", default="groq:openai/gpt-oss-20b", help="model for letters ('same' = the lawyer model)")
     ap.add_argument("--no-judge", action="store_true")
     ap.add_argument("--rules-only", action="store_true")
     ap.add_argument("--workers", type=int, default=3)
@@ -63,15 +64,16 @@ def main():
     sys.stdout.reconfigure(encoding="utf-8")
 
     if args.rules_only:
-        lawyer = judge = None
+        lawyer = judge = drafter = None
         name = "rules-only"
     else:
         lawyer = LLM(args.lawyer, fallback=args.fallback, max_tokens=2500, expected_out=900)
         judge = None if args.no_judge else LLM(args.judge, max_tokens=1200, otpm=1000, expected_out=250, temperature=0)
+        drafter = None if args.drafter == "same" else LLM(args.drafter, max_tokens=2000, expected_out=700)
         name = args.lawyer.split("/")[-1].split(":")[-1]
 
     def make(today):
-        return Session(lawyer=lawyer, judge=judge, today=today)
+        return Session(lawyer=lawyer, judge=judge, drafter=drafter, today=today)
 
     if args.text:
         s = make(date.today())
@@ -93,7 +95,7 @@ def main():
 
     out = ROOT / (args.out or f"outputs/{name}")
     out.mkdir(parents=True, exist_ok=True)
-    meta = {"lawyer": None if args.rules_only else args.lawyer, "judge": None if (args.rules_only or args.no_judge) else args.judge,
+    meta = {"lawyer": None if args.rules_only else args.lawyer, "drafter": None if args.rules_only else args.drafter, "judge": None if (args.rules_only or args.no_judge) else args.judge,
             "cases": len(results), "today": spec["today"], "runtime_s": round(time.time() - t0, 1), "usage": llm_mod.USAGE}
     (out / "results.json").write_text(json.dumps({"meta": meta, "results": results}, indent=1, ensure_ascii=False), encoding="utf-8")
     (out / "run_meta.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")

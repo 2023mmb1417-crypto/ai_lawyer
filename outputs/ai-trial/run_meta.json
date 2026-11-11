@@ -1,0 +1,21 @@
+{
+ "lawyer": "groq:openai/gpt-oss-120b",
+ "judge": "groq:qwen/qwen3.8-27b",
+ "cases": 2,
+ "today": "2026-11-11",
+ "runtime_s": 123.0,
+ "usage": {
+  "groq:openai/gpt-oss-120b": {
+   "calls": 5,
+   "input_tokens": 7589,
+   "output_tokens": 2857,
+   "cache_hits": 2
+  },
+  "groq:qwen/qwen3.8-27b": {
+   "calls": 2,
+   "input_tokens": 3686,
+   "output_tokens": 202,
+   "cache_hits": 0
+  }
+ }
+}

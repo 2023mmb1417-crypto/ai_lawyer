@@ -41,6 +41,7 @@ def with_safety_notes(entries: list[dict], flags: list[str]) -> list[dict]:
 class Session:
     lawyer: LLM | None = None              # None = rules-only mode
     judge: LLM | None = None
+    drafter: LLM | None = None             # letters; defaults to the lawyer model
     today: date = field(default_factory=date.today)
     messages: list[str] = field(default_factory=list)
     lang: str = "en"
@@ -155,7 +156,8 @@ class Session:
         entries = [kb.laws()[i] for i in ids]
         system = prompts.DRAFT.format(doc_type=doc_type, law_ids=ids, doc_rule=prompts.DOC_RULES[rule_key], laws=kb.render(entries))
         user = f"Case file:\n{case.model_dump_json(indent=1)}\n\nPerson's own words:\n{self.story}"
-        d, _ = self.lawyer.structured(Draft, system, user)
+        writer = self.drafter or self.lawyer
+        d, _ = writer.structured(Draft, system, user)
         d.doc_type = doc_type
         exp = render.EXPECTED_DAYS[doc_type]
         errs = validate.check_draft(d, case, self.story, ids, exp)
